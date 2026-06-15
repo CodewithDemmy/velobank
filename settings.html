@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings — Velobank</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Sora:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+  <div class="dash">
+
+    <!-- ===== Sidebar ===== -->
+    <aside class="dash__sidebar" id="sidebar">
+      <div class="dash__sidebar-top">
+        <a href="index.html" class="nav__logo">Velo<span>bank</span></a>
+
+        <nav class="dash__nav">
+          <a href="dashboard.html" class="dash__nav-link">
+            <span class="dash__nav-icon">⌂</span> Overview
+          </a>
+          <a href="transactions.html" class="dash__nav-link">
+            <span class="dash__nav-icon">↔</span> Transactions
+          </a>
+          <a href="beneficiaries.html" class="dash__nav-link">
+            <span class="dash__nav-icon">👥</span> Beneficiaries
+          </a>
+          <a href="cards.html" class="dash__nav-link">
+            <span class="dash__nav-icon">▭</span> Cards
+          </a>
+          <a href="savings.html" class="dash__nav-link">
+            <span class="dash__nav-icon">●</span> Savings
+          </a>
+          <a href="settings.html" class="dash__nav-link is-active">
+            <span class="dash__nav-icon">⚙</span> Settings
+          </a>
+        </nav>
+      </div>
+
+      <div class="dash__sidebar-bottom">
+        <div class="dash__user">
+          <div class="dash__avatar">AA</div>
+          <div>
+            <span class="dash__user-name">Ademola A.</span>
+            <span class="dash__user-tag">Personal account</span>
+          </div>
+        </div>
+        <div class="dash__nav-secondary">
+          <a href="index.html" class="dash__nav-link">
+            <span class="dash__nav-icon">🌐</span> Visit website
+          </a>
+          <a href="contact.html" class="dash__nav-link">
+            <span class="dash__nav-icon">✉</span> Contact support
+          </a>
+        </div>
+        <a href="login.html" class="dash__nav-link dash__logout">
+          <span class="dash__nav-icon">⏻</span> Log out
+        </a>
+      </div>
+    </aside>
+
+    <!-- ===== Main content ===== -->
+    <main class="dash__main">
+
+      <!-- Top bar -->
+      <header class="dash__topbar">
+        <button class="dash__menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <div class="dash__greeting">
+          <p class="eyebrow" id="dashDate">Loading date...</p>
+          <h1>Settings</h1>
+        </div>
+
+        <div class="dash__topbar-actions">
+          <button class="dash__icon-btn" aria-label="Notifications">
+            🔔
+            <span class="dash__badge">3</span>
+          </button>
+          <div class="dash__avatar dash__avatar--sm">AA</div>
+        </div>
+      </header>
+
+      <!-- Settings tabs -->
+      <div class="settings-layout">
+
+        <nav class="settings-tabs" id="settingsTabs">
+          <button class="settings-tab is-active" data-tab="profile">Profile</button>
+          <button class="settings-tab" data-tab="security">Security</button>
+          <button class="settings-tab" data-tab="notifications">Notifications</button>
+          <button class="settings-tab" data-tab="danger">Danger zone</button>
+        </nav>
+
+        <div class="settings-content">
+
+          <!-- Profile -->
+          <section class="panel settings-panel is-active" data-panel="profile">
+            <div class="panel__head">
+              <h3>Profile information</h3>
+            </div>
+
+            <form id="profileForm">
+              <div class="form-row" style="grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+                <div class="form-group">
+                  <label for="settingsFullName">Full name</label>
+                  <input type="text" id="settingsFullName" class="form-control" value="Ademola Afolabi" />
+                </div>
+                <div class="form-group">
+                  <label for="settingsPhone">Phone number</label>
+                  <input type="tel" id="settingsPhone" class="form-control" value="08012345678" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="settingsEmail">Email address</label>
+                <input type="email" id="settingsEmail" class="form-control" value="ademola@example.com" />
+              </div>
+
+              <div class="form-group">
+                <label for="settingsAddress">Home address</label>
+                <input type="text" id="settingsAddress" class="form-control" value="14 Admiralty Way, Lekki Phase 1, Lagos" />
+              </div>
+
+              <button type="submit" class="btn btn--accent">Save changes</button>
+              <span class="settings-save-note" id="profileSaveNote"></span>
+            </form>
+          </section>
+
+          <!-- Security -->
+          <section class="panel settings-panel" data-panel="security">
+            <div class="panel__head">
+              <h3>Password</h3>
+            </div>
+
+            <form id="passwordForm">
+              <div class="form-group">
+                <label for="currentPassword">Current password</label>
+                <div class="password-field">
+                  <input type="password" id="currentPassword" class="form-control" placeholder="Enter current password" />
+                  <button type="button" class="password-toggle" data-toggle-for="currentPassword">Show</button>
+                </div>
+              </div>
+
+              <div class="form-row" style="grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+                <div class="form-group">
+                  <label for="newPassword">New password</label>
+                  <div class="password-field">
+                    <input type="password" id="newPassword" class="form-control" placeholder="At least 8 characters" />
+                    <button type="button" class="password-toggle" data-toggle-for="newPassword">Show</button>
+                  </div>
+                  <span class="field-error" data-error-for="newPassword">Password must be at least 8 characters.</span>
+                </div>
+                <div class="form-group">
+                  <label for="confirmNewPassword">Confirm new password</label>
+                  <div class="password-field">
+                    <input type="password" id="confirmNewPassword" class="form-control" placeholder="Re-enter new password" />
+                    <button type="button" class="password-toggle" data-toggle-for="confirmNewPassword">Show</button>
+                  </div>
+                  <span class="field-error" data-error-for="confirmNewPassword">Passwords don't match.</span>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn--accent">Update password</button>
+              <span class="settings-save-note" id="passwordSaveNote"></span>
+            </form>
+
+            <div class="settings-divider"></div>
+
+            <div class="panel__head">
+              <h3>Two-factor authentication</h3>
+            </div>
+
+            <div class="card-toggle-row" style="margin-top: 0; padding-top: 0; border-top: none;">
+              <div>
+                <span class="card-toggle-row__label">Require a code when logging in</span>
+                <span class="card-toggle-row__hint">We'll send a one-time code to your phone every time you log in from a new device.</span>
+              </div>
+              <button class="toggle-switch" id="twoFaToggle" aria-pressed="true">
+                <span class="toggle-switch__knob"></span>
+              </button>
+            </div>
+          </section>
+
+          <!-- Notifications -->
+          <section class="panel settings-panel" data-panel="notifications">
+            <div class="panel__head">
+              <h3>Notification preferences</h3>
+            </div>
+
+            <div class="settings-toggle-list">
+              <div class="card-toggle-row" style="margin-top: 0; padding-top: 0; border-top: none;">
+                <div>
+                  <span class="card-toggle-row__label">Transaction alerts</span>
+                  <span class="card-toggle-row__hint">Get notified every time money moves in or out of your account.</span>
+                </div>
+                <button class="toggle-switch" data-pref="transactions" aria-pressed="true">
+                  <span class="toggle-switch__knob"></span>
+                </button>
+              </div>
+
+              <div class="card-toggle-row">
+                <div>
+                  <span class="card-toggle-row__label">Email notifications</span>
+                  <span class="card-toggle-row__hint">Account summaries and statements sent to your email.</span>
+                </div>
+                <button class="toggle-switch" data-pref="email" aria-pressed="true">
+                  <span class="toggle-switch__knob"></span>
+                </button>
+              </div>
+
+              <div class="card-toggle-row">
+                <div>
+                  <span class="card-toggle-row__label">SMS alerts</span>
+                  <span class="card-toggle-row__hint">Receive a text message for every transaction.</span>
+                </div>
+                <button class="toggle-switch" data-pref="sms" aria-pressed="false">
+                  <span class="toggle-switch__knob"></span>
+                </button>
+              </div>
+
+              <div class="card-toggle-row">
+                <div>
+                  <span class="card-toggle-row__label">Marketing &amp; offers</span>
+                  <span class="card-toggle-row__hint">Occasional updates about new features and promotions.</span>
+                </div>
+                <button class="toggle-switch" data-pref="marketing" aria-pressed="false">
+                  <span class="toggle-switch__knob"></span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Danger zone -->
+          <section class="panel settings-panel" data-panel="danger">
+            <div class="panel__head">
+              <h3>Danger zone</h3>
+            </div>
+
+            <div class="danger-row">
+              <div>
+                <span class="card-toggle-row__label">Temporarily deactivate account</span>
+                <span class="card-toggle-row__hint">Your account and cards will be paused until you log back in.</span>
+              </div>
+              <button class="btn btn--ghost" id="deactivateBtn">Deactivate</button>
+            </div>
+
+            <div class="danger-row">
+              <div>
+                <span class="card-toggle-row__label">Close account permanently</span>
+                <span class="card-toggle-row__hint">This can't be undone. You'll need to withdraw your balance first.</span>
+              </div>
+              <button class="btn btn--danger" id="closeAccountBtn">Close account</button>
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Confirm danger action modal -->
+  <div class="modal" id="dangerModal" aria-hidden="true">
+    <div class="modal__panel">
+      <button class="modal__close" id="dangerModalClose" aria-label="Close">×</button>
+      <h3 id="dangerModalTitle">Are you sure?</h3>
+      <p class="modal__sub" id="dangerModalText">This action cannot be undone.</p>
+      <div style="display: flex; gap: 0.75rem;">
+        <button class="btn btn--ghost" id="dangerCancel" style="flex: 1;">Cancel</button>
+        <button class="btn btn--danger" id="dangerConfirm" style="flex: 1;">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+</html>

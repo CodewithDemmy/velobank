@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log in — Velobank</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Sora:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+
+  <div class="auth">
+
+    <!-- ===== Left brand panel ===== -->
+    <aside class="auth__brand">
+      <a href="index.html" class="nav__logo">Velo<span>bank</span></a>
+
+      <div class="auth__brand-body">
+        <h2>Welcome back.</h2>
+        <p>
+          Your money's been moving while you were away — instant
+          transfers, automatic savings, and real-time alerts, all
+          waiting in your dashboard.
+        </p>
+
+        <div class="auth__brand-card">
+          <div class="bank-card bank-card--front">
+            <div class="bank-card__top">
+              <span class="bank-card__brand">Velobank</span>
+              <span class="bank-card__type">Debit</span>
+            </div>
+            <div class="bank-card__chip" aria-hidden="true"></div>
+            <div class="bank-card__number">5312&nbsp;&nbsp;4821&nbsp;&nbsp;0094&nbsp;&nbsp;7790</div>
+            <div class="bank-card__bottom">
+              <div>
+                <span class="bank-card__label">Card holder</span>
+                <span class="bank-card__value">Ademola A.</span>
+              </div>
+              <div>
+                <span class="bank-card__label">Valid thru</span>
+                <span class="bank-card__value">09/29</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="auth__brand-foot">
+        New to Velobank? <a href="signup.html">Open an account</a>
+      </p>
+    </aside>
+
+    <!-- ===== Right form panel ===== -->
+    <main class="auth__panel">
+      <div class="auth__form-wrap">
+
+        <a href="index.html" class="nav__logo auth__mobile-logo">Velo<span>bank</span></a>
+
+        <div class="auth__heading">
+          <h1>Log in to Velobank</h1>
+          <p>Enter your details to access your account.</p>
+        </div>
+
+        <form id="loginForm" novalidate>
+          <div class="form-group">
+            <label for="loginId">Email or phone number</label>
+            <input type="text" id="loginId" class="form-control" placeholder="you@example.com or 080•• ••• ••••" autocomplete="username" />
+            <span class="field-error" data-error-for="loginId">Enter your email or phone number.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <div class="password-field">
+              <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" autocomplete="current-password" />
+              <button type="button" class="password-toggle" data-toggle-for="loginPassword">Show</button>
+            </div>
+            <div class="field-meta">
+              <a href="#">Forgot password?</a>
+            </div>
+            <span class="field-error" data-error-for="loginPassword">Enter your password.</span>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" id="rememberMe" />
+            <label for="rememberMe">Keep me logged in on this device</label>
+          </div>
+
+          <div class="form-step__actions" style="margin-top: 1.5rem;">
+            <button type="submit" class="btn btn--accent" style="width: 100%;">Log in</button>
+          </div>
+
+          <p class="auth__switch" id="loginNote"></p>
+        </form>
+
+        <!-- Success state -->
+        <div class="auth-success" id="loginSuccess">
+          <div class="auth-success__icon">✓</div>
+          <h1>Welcome back!</h1>
+          <p>You're logged in. Taking you to your dashboard...</p>
+          <a href="dashboard.html" class="btn btn--accent">Go to dashboard</a>
+        </div>
+
+        <p class="auth__switch">
+          New to Velobank? <a href="signup.html">Open an account</a>
+        </p>
+
+      </div>
+    </main>
+
+  </div>
+
+  <script src="js/script.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

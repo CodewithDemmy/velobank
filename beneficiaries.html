@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beneficiaries — Velobank</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Sora:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+  <div class="dash">
+
+    <!-- ===== Sidebar ===== -->
+    <aside class="dash__sidebar" id="sidebar">
+      <div class="dash__sidebar-top">
+        <a href="index.html" class="nav__logo">Velo<span>bank</span></a>
+
+        <nav class="dash__nav">
+          <a href="dashboard.html" class="dash__nav-link">
+            <span class="dash__nav-icon">⌂</span> Overview
+          </a>
+          <a href="transactions.html" class="dash__nav-link">
+            <span class="dash__nav-icon">↔</span> Transactions
+          </a>
+          <a href="beneficiaries.html" class="dash__nav-link is-active">
+            <span class="dash__nav-icon">👥</span> Beneficiaries
+          </a>
+          <a href="cards.html" class="dash__nav-link">
+            <span class="dash__nav-icon">▭</span> Cards
+          </a>
+          <a href="savings.html" class="dash__nav-link">
+            <span class="dash__nav-icon">●</span> Savings
+          </a>
+          <a href="settings.html" class="dash__nav-link">
+            <span class="dash__nav-icon">⚙</span> Settings
+          </a>
+        </nav>
+      </div>
+
+      <div class="dash__sidebar-bottom">
+        <div class="dash__user">
+          <div class="dash__avatar">AA</div>
+          <div>
+            <span class="dash__user-name">Ademola A.</span>
+            <span class="dash__user-tag">Personal account</span>
+          </div>
+        </div>
+
+        <div class="dash__nav-secondary">
+          <a href="index.html" class="dash__nav-link">
+            <span class="dash__nav-icon">🌐</span> Visit website
+          </a>
+          <a href="contact.html" class="dash__nav-link">
+            <span class="dash__nav-icon">✉</span> Contact support
+          </a>
+        </div>
+        <a href="login.html" class="dash__nav-link dash__logout">
+          <span class="dash__nav-icon">⏻</span> Log out
+        </a>
+      </div>
+    </aside>
+
+    <!-- ===== Main content ===== -->
+    <main class="dash__main">
+
+      <!-- Top bar -->
+      <header class="dash__topbar">
+        <button class="dash__menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <div class="dash__greeting">
+          <p class="eyebrow" id="dashDate">Loading date...</p>
+          <h1>Beneficiaries</h1>
+        </div>
+
+        <div class="dash__topbar-actions">
+          <button class="dash__icon-btn" aria-label="Notifications">
+            🔔
+            <span class="dash__badge">3</span>
+          </button>
+          <div class="dash__avatar dash__avatar--sm">AA</div>
+        </div>
+      </header>
+
+      <!-- Toolbar -->
+      <section class="tx-toolbar">
+        <div class="tx-search" style="max-width: 360px;">
+          <span class="tx-search__icon">🔍</span>
+          <input type="text" id="beneSearch" class="form-control" placeholder="Search beneficiaries..." />
+        </div>
+
+        <button class="btn btn--accent" id="addBeneBtn">＋ Add beneficiary</button>
+      </section>
+
+      <!-- Beneficiaries grid -->
+      <section class="bene-grid" id="beneGrid">
+        <!-- populated by JS -->
+      </section>
+
+      <p class="tx-empty" id="beneEmpty">No beneficiaries match your search.</p>
+
+    </main>
+  </div>
+
+  <!-- Send money modal (reused pattern) -->
+  <div class="modal" id="sendModal" aria-hidden="true">
+    <div class="modal__panel">
+      <button class="modal__close" id="sendModalClose" aria-label="Close">×</button>
+      <h3>Send money</h3>
+      <p class="modal__sub">Sending to <strong id="sendBeneName">recipient</strong> · <span class="mono" id="sendBeneAccount"></span></p>
+
+      <form id="sendForm">
+        <div class="form-group">
+          <label for="sendAmount">Amount (₦)</label>
+          <input type="number" id="sendAmount" class="form-control" placeholder="0.00" min="0" step="0.01" />
+        </div>
+        <div class="form-group">
+          <label for="sendNote">Note (optional)</label>
+          <input type="text" id="sendNote" class="form-control" placeholder="What's this for?" />
+        </div>
+        <button type="submit" class="btn btn--accent" style="width: 100%;">Send money</button>
+      </form>
+
+      <div class="modal__success" id="sendSuccess">
+        <div class="auth-success__icon">✓</div>
+        <h3>Transfer sent</h3>
+        <p id="sendSuccessText">Your transfer was completed.</p>
+        <button class="btn btn--accent" id="sendDone">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add / edit beneficiary modal -->
+  <div class="modal" id="beneModal" aria-hidden="true">
+    <div class="modal__panel">
+      <button class="modal__close" id="beneModalClose" aria-label="Close">×</button>
+
+      <div id="beneForm">
+        <h3 id="beneModalTitle">Add beneficiary</h3>
+        <p class="modal__sub">Save their details for faster transfers next time.</p>
+
+        <div class="form-group">
+          <label for="beneName">Full name</label>
+          <input type="text" id="beneName" class="form-control" placeholder="e.g. Chidi Okafor" />
+          <span class="field-error" data-error-for="beneName">Enter a name.</span>
+        </div>
+
+        <div class="form-row" style="grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+          <div class="form-group">
+            <label for="beneBank">Bank</label>
+            <input type="text" id="beneBank" class="form-control" placeholder="e.g. GTBank" />
+            <span class="field-error" data-error-for="beneBank">Enter a bank name.</span>
+          </div>
+          <div class="form-group">
+            <label for="beneAccount">Account number</label>
+            <input type="text" id="beneAccount" class="form-control" placeholder="0123456789" inputmode="numeric" maxlength="10" />
+            <span class="field-error" data-error-for="beneAccount">Enter a 10-digit account number.</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn--accent" style="width: 100%;" id="beneSubmit">Save beneficiary</button>
+      </div>
+
+      <div class="modal__success" id="beneSuccess">
+        <div class="auth-success__icon">✓</div>
+        <h3 id="beneSuccessTitle">Saved</h3>
+        <p id="beneSuccessText">Beneficiary saved.</p>
+        <button class="btn btn--accent" id="beneDone">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+  <script src="js/beneficiaries.js"></script>
+</body>
+</html>

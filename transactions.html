@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transactions — Velobank</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Sora:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+  <div class="dash">
+
+    <!-- ===== Sidebar ===== -->
+    <aside class="dash__sidebar" id="sidebar">
+      <div class="dash__sidebar-top">
+        <a href="index.html" class="nav__logo">Velo<span>bank</span></a>
+
+        <nav class="dash__nav">
+          <a href="dashboard.html" class="dash__nav-link">
+            <span class="dash__nav-icon">⌂</span> Overview
+          </a>
+          <a href="transactions.html" class="dash__nav-link is-active">
+            <span class="dash__nav-icon">↔</span> Transactions
+          </a>
+          <a href="beneficiaries.html" class="dash__nav-link">
+            <span class="dash__nav-icon">👥</span> Beneficiaries
+          </a>
+          <a href="cards.html" class="dash__nav-link">
+            <span class="dash__nav-icon">▭</span> Cards
+          </a>
+          <a href="savings.html" class="dash__nav-link">
+            <span class="dash__nav-icon">●</span> Savings
+          </a>
+          <a href="settings.html" class="dash__nav-link">
+            <span class="dash__nav-icon">⚙</span> Settings
+          </a>
+        </nav>
+      </div>
+
+      <div class="dash__sidebar-bottom">
+        <div class="dash__user">
+          <div class="dash__avatar">AA</div>
+          <div>
+            <span class="dash__user-name">Ademola A.</span>
+            <span class="dash__user-tag">Personal account</span>
+          </div>
+        </div>
+        <div class="dash__nav-secondary">
+          <a href="index.html" class="dash__nav-link">
+            <span class="dash__nav-icon">🌐</span> Visit website
+          </a>
+          <a href="contact.html" class="dash__nav-link">
+            <span class="dash__nav-icon">✉</span> Contact support
+          </a>
+        </div>
+        <a href="login.html" class="dash__nav-link dash__logout">
+          <span class="dash__nav-icon">⏻</span> Log out
+        </a>
+      </div>
+    </aside>
+
+    <!-- ===== Main content ===== -->
+    <main class="dash__main">
+
+      <!-- Top bar -->
+      <header class="dash__topbar">
+        <button class="dash__menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <div class="dash__greeting">
+          <p class="eyebrow" id="dashDate">Loading date...</p>
+          <h1>Transactions</h1>
+        </div>
+
+        <div class="dash__topbar-actions">
+          <button class="dash__icon-btn" aria-label="Notifications">
+            🔔
+            <span class="dash__badge">3</span>
+          </button>
+          <div class="dash__avatar dash__avatar--sm">AA</div>
+        </div>
+      </header>
+
+      <!-- Filters -->
+      <section class="tx-toolbar">
+        <div class="tx-filters" id="txFilters">
+          <button class="tx-filter is-active" data-filter="all">All</button>
+          <button class="tx-filter" data-filter="in">Money in</button>
+          <button class="tx-filter" data-filter="out">Money out</button>
+          <button class="tx-filter" data-filter="bills">Bills &amp; subscriptions</button>
+        </div>
+
+        <div class="tx-search">
+          <span class="tx-search__icon">🔍</span>
+          <input type="text" id="txSearch" class="form-control" placeholder="Search transactions..." />
+        </div>
+      </section>
+
+      <!-- Transaction groups -->
+      <section class="panel">
+        <div id="txGroups">
+          <!-- populated by JS -->
+        </div>
+
+        <p class="tx-empty" id="txEmpty">No transactions match your search.</p>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+  <script src="js/transactions.js"></script>
+</body>
+</html>

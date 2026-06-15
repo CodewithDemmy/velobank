@@ -1,0 +1,163 @@
+/* ============================================
+   Velobank — About page
+   Extends tokens defined in style.css & contact.css
+   ============================================ */
+
+/* ---------------------------------------------
+   Hero tweak (slightly shorter than contact hero)
+--------------------------------------------- */
+.about-hero {
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* ---------------------------------------------
+   Mission section
+--------------------------------------------- */
+.about-mission {
+  padding: 0 1.5rem clamp(3rem, 6vw, 5rem);
+}
+
+.about-mission__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.about-mission__copy h2 {
+  font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+  margin: 0.4rem 0 1.25rem;
+}
+.about-mission__copy p {
+  color: var(--color-muted);
+  margin-bottom: 1rem;
+  max-width: 38em;
+}
+.about-mission__copy p:last-child { margin-bottom: 0; }
+
+.about-mission__visual {
+  display: flex;
+  justify-content: center;
+}
+.about-mission__card {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1.6 / 1;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ---------------------------------------------
+   Stats band
+--------------------------------------------- */
+.about-stats {
+  background: var(--color-primary);
+  color: var(--color-bg);
+  padding: clamp(2.5rem, 5vw, 4rem) 1.5rem;
+}
+
+.about-stats__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.about-stats .stat__num {
+  color: var(--color-bg);
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+}
+.about-stats .stat__label {
+  color: rgba(247, 244, 237, 0.6);
+  max-width: none;
+  margin: 0 auto;
+}
+.about-stats .stat {
+  align-items: center;
+}
+
+/* ---------------------------------------------
+   Team section
+--------------------------------------------- */
+.about-team {
+  padding: clamp(3rem, 6vw, 5rem) 1.5rem;
+}
+
+.about-team__grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.team-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.team-card__avatar {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: var(--color-mint);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.team-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.team-card__role {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.team-card p {
+  font-size: 0.88rem;
+  color: var(--color-muted);
+}
+
+/* ---------------------------------------------
+   Responsive
+--------------------------------------------- */
+@media (max-width: 900px) {
+  .about-mission__inner {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  .about-mission__visual { order: -1; }
+
+  .about-stats__inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .about-team__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .about-team__grid {
+    grid-template-columns: 1fr;
+  }
+}

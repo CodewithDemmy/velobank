@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Open an account — Velobank</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Sora:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+
+  <div class="auth">
+
+    <!-- ===== Left brand panel ===== -->
+    <aside class="auth__brand">
+      <a href="index.html" class="nav__logo">Velo<span>bank</span></a>
+
+      <div class="auth__brand-body">
+        <h2>Three steps. About five minutes. No paperwork.</h2>
+        <p>
+          Everything you need to open your account is right here —
+          your details, a password, and a quick ID check. No branch
+          visits, no forms to print.
+        </p>
+
+        <div class="auth__brand-card">
+          <div class="bank-card bank-card--front">
+            <div class="bank-card__top">
+              <span class="bank-card__brand">Velobank</span>
+              <span class="bank-card__type">Virtual</span>
+            </div>
+            <div class="bank-card__chip" aria-hidden="true"></div>
+            <div class="bank-card__number">5312&nbsp;&nbsp;48••&nbsp;&nbsp;••••&nbsp;&nbsp;7790</div>
+            <div class="bank-card__bottom">
+              <div>
+                <span class="bank-card__label">Card holder</span>
+                <span class="bank-card__value">Your name here</span>
+              </div>
+              <div>
+                <span class="bank-card__label">Expires</span>
+                <span class="bank-card__value">09/29</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="auth__brand-foot">
+        Already have an account? <a href="login.html">Log in</a>
+      </p>
+    </aside>
+
+    <!-- ===== Right form panel ===== -->
+    <main class="auth__panel">
+      <div class="auth__form-wrap">
+
+        <a href="index.html" class="nav__logo auth__mobile-logo">Velo<span>bank</span></a>
+
+        <!-- Stepper -->
+        <div class="stepper" id="stepper">
+          <div class="stepper__step is-active" data-step="1">
+            <span class="stepper__num">1</span>
+            <span class="stepper__label">Your details</span>
+          </div>
+          <div class="stepper__step" data-step="2">
+            <span class="stepper__num">2</span>
+            <span class="stepper__label">Security</span>
+          </div>
+          <div class="stepper__step" data-step="3">
+            <span class="stepper__num">3</span>
+            <span class="stepper__label">Verify</span>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form id="signupForm" novalidate>
+
+          <!-- Step 1: Personal info -->
+          <fieldset class="form-step is-active" data-step="1">
+            <div class="auth__heading">
+              <h1>Let's start with the basics</h1>
+              <p>This is how we'll identify your account and reach you.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="fullName">Full name</label>
+              <input type="text" id="fullName" class="form-control" placeholder="e.g. Ademola Afolabi" autocomplete="name" />
+              <span class="field-error" data-error-for="fullName">Enter your full name as it appears on your ID.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone number</label>
+              <input type="tel" id="phone" class="form-control" placeholder="080•• ••• ••••" autocomplete="tel" />
+              <span class="field-error" data-error-for="phone">Enter a valid Nigerian phone number.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" id="email" class="form-control" placeholder="you@example.com" autocomplete="email" />
+              <span class="field-error" data-error-for="email">Enter a valid email address.</span>
+            </div>
+
+            <div class="form-step__actions">
+              <button type="button" class="btn btn--accent step-next" data-next="2">Continue</button>
+            </div>
+          </fieldset>
+
+          <!-- Step 2: Security -->
+          <fieldset class="form-step" data-step="2">
+            <div class="auth__heading">
+              <h1>Secure your account</h1>
+              <p>Choose a password you don't use anywhere else.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="password-field">
+                <input type="password" id="password" class="form-control" placeholder="At least 8 characters" autocomplete="new-password" />
+                <button type="button" class="password-toggle" data-toggle-for="password">Show</button>
+              </div>
+              <div class="strength" id="strengthMeter" aria-hidden="true">
+                <span class="strength__bar"></span>
+                <span class="strength__bar"></span>
+                <span class="strength__bar"></span>
+              </div>
+              <span class="strength__label" id="strengthLabel">Use 8+ characters with a number and a symbol.</span>
+              <span class="field-error" data-error-for="password">Password must be at least 8 characters.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="confirmPassword">Confirm password</label>
+              <div class="password-field">
+                <input type="password" id="confirmPassword" class="form-control" placeholder="Re-enter your password" autocomplete="new-password" />
+                <button type="button" class="password-toggle" data-toggle-for="confirmPassword">Show</button>
+              </div>
+              <span class="field-error" data-error-for="confirmPassword">Passwords don't match.</span>
+            </div>
+
+            <div class="form-step__actions">
+              <button type="button" class="btn btn--ghost step-back" data-back="1">Back</button>
+              <button type="button" class="btn btn--accent step-next" data-next="3">Continue</button>
+            </div>
+          </fieldset>
+
+          <!-- Step 3: Verification -->
+          <fieldset class="form-step" data-step="3">
+            <div class="auth__heading">
+              <h1>Verify it's you</h1>
+              <p>This keeps your account secure and is required by Nigerian banking regulations.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="nin">NIN or BVN</label>
+              <input type="text" id="nin" class="form-control" placeholder="11-digit number" inputmode="numeric" maxlength="11" />
+              <span class="hint">We use this only to confirm your identity — it's never shared.</span>
+              <span class="field-error" data-error-for="nin">Enter an 11-digit NIN or BVN.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="selfie">Selfie for verification</label>
+              <label class="upload-box" id="uploadBox" for="selfie">
+                <div class="upload-box__icon">📷</div>
+                <div class="upload-box__text upload-box__text--default">Click to upload, or drag a photo here</div>
+                <div class="upload-box__filename" id="uploadFilename"></div>
+                <input type="file" id="selfie" accept="image/*" />
+              </label>
+              <span class="field-error" data-error-for="selfie">Upload a clear selfie to continue.</span>
+            </div>
+
+            <div class="form-check">
+              <input type="checkbox" id="terms" />
+              <label for="terms">
+                I agree to Velobank's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>, and confirm the information provided is accurate.
+              </label>
+            </div>
+            <span class="field-error" data-error-for="terms">You need to accept the terms to continue.</span>
+
+            <div class="form-step__actions">
+              <button type="button" class="btn btn--ghost step-back" data-back="2">Back</button>
+              <button type="submit" class="btn btn--accent">Create account</button>
+            </div>
+          </fieldset>
+
+        </form>
+
+        <!-- Success state -->
+        <div class="auth-success" id="authSuccess">
+          <div class="auth-success__icon">✓</div>
+          <h1>You're in, <span id="successName">friend</span>.</h1>
+          <p>Your Velobank account has been created. We're setting up your account number now — this usually takes a few seconds.</p>
+          <a href="dashboard.html" class="btn btn--accent">Go to dashboard</a>
+        </div>
+
+        <p class="auth__switch" id="switchLink">
+          Already have an account? <a href="login.html">Log in</a>
+        </p>
+
+      </div>
+    </main>
+
+  </div>
+
+  <script src="js/script.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

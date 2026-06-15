@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cards — Velobank</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Sora:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+  <div class="dash">
+
+    <!-- ===== Sidebar ===== -->
+    <aside class="dash__sidebar" id="sidebar">
+      <div class="dash__sidebar-top">
+        <a href="index.html" class="nav__logo">Velo<span>bank</span></a>
+
+        <nav class="dash__nav">
+          <a href="dashboard.html" class="dash__nav-link">
+            <span class="dash__nav-icon">⌂</span> Overview
+          </a>
+          <a href="transactions.html" class="dash__nav-link">
+            <span class="dash__nav-icon">↔</span> Transactions
+          </a>
+          <a href="beneficiaries.html" class="dash__nav-link">
+            <span class="dash__nav-icon">👥</span> Beneficiaries
+          </a>
+          <a href="cards.html" class="dash__nav-link is-active">
+            <span class="dash__nav-icon">▭</span> Cards
+          </a>
+          <a href="savings.html" class="dash__nav-link">
+            <span class="dash__nav-icon">●</span> Savings
+          </a>
+          <a href="settings.html" class="dash__nav-link">
+            <span class="dash__nav-icon">⚙</span> Settings
+          </a>
+        </nav>
+      </div>
+
+      <div class="dash__sidebar-bottom">
+        <div class="dash__user">
+          <div class="dash__avatar">AA</div>
+          <div>
+            <span class="dash__user-name">Ademola A.</span>
+            <span class="dash__user-tag">Personal account</span>
+          </div>
+        </div>
+        <div class="dash__nav-secondary">
+          <a href="index.html" class="dash__nav-link">
+            <span class="dash__nav-icon">🌐</span> Visit website
+          </a>
+          <a href="contact.html" class="dash__nav-link">
+            <span class="dash__nav-icon">✉</span> Contact support
+          </a>
+        </div>
+        <a href="login.html" class="dash__nav-link dash__logout">
+          <span class="dash__nav-icon">⏻</span> Log out
+        </a>
+      </div>
+    </aside>
+
+    <!-- ===== Main content ===== -->
+    <main class="dash__main">
+
+      <!-- Top bar -->
+      <header class="dash__topbar">
+        <button class="dash__menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <div class="dash__greeting">
+          <p class="eyebrow" id="dashDate">Loading date...</p>
+          <h1>Your cards</h1>
+        </div>
+
+        <div class="dash__topbar-actions">
+          <button class="dash__icon-btn" aria-label="Notifications">
+            🔔
+            <span class="dash__badge">3</span>
+          </button>
+          <div class="dash__avatar dash__avatar--sm">AA</div>
+        </div>
+      </header>
+
+      <!-- Cards grid -->
+      <section class="cards-grid">
+
+        <!-- Virtual card -->
+        <div class="card-manage panel">
+          <div class="card-manage__visual">
+            <div class="bank-card bank-card--front mini-card__card" id="virtualCardVisual">
+              <div class="bank-card__top">
+                <span class="bank-card__brand">Velobank</span>
+                <span class="bank-card__type">Virtual</span>
+              </div>
+              <div class="bank-card__chip" aria-hidden="true"></div>
+              <div class="bank-card__number" id="virtualCardNumber">5312&nbsp;&nbsp;48••&nbsp;&nbsp;••••&nbsp;&nbsp;7790</div>
+              <div class="bank-card__bottom">
+                <div>
+                  <span class="bank-card__label">Card holder</span>
+                  <span class="bank-card__value">Ademola A.</span>
+                </div>
+                <div>
+                  <span class="bank-card__label">Expires</span>
+                  <span class="bank-card__value" id="virtualCardExpiry">09/29</span>
+                </div>
+              </div>
+              <div class="mini-card__frozen" id="virtualFrozenOverlay">
+                <span>❄ Card frozen</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-manage__details">
+            <h3>Virtual card</h3>
+            <p class="card-manage__sub">Best for online payments, subscriptions, and anywhere that asks for card details.</p>
+
+            <div class="card-detail-row">
+              <span>Card number</span>
+              <span class="mono" id="virtualNumberMasked">5312 48•• •••• 7790</span>
+            </div>
+            <div class="card-detail-row">
+              <span>CVV</span>
+              <span class="mono" id="virtualCvv">•••</span>
+            </div>
+            <div class="card-detail-row">
+              <span>Expiry</span>
+              <span class="mono">09/29</span>
+            </div>
+
+            <button class="btn btn--ghost card-manage__toggle" data-reveal-target="virtual">Show full details</button>
+
+            <div class="card-toggle-row">
+              <div>
+                <span class="card-toggle-row__label">Freeze this card</span>
+                <span class="card-toggle-row__hint">Pauses all transactions instantly.</span>
+              </div>
+              <button class="toggle-switch" id="virtualFreezeToggle" data-card="virtual" aria-pressed="false">
+                <span class="toggle-switch__knob"></span>
+              </button>
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem;">
+              <label for="virtualLimit">Daily spending limit</label>
+              <input type="range" id="virtualLimit" class="slider" min="0" max="500000" step="5000" value="100000" />
+              <div class="slider__value mono" id="virtualLimitValue">₦100,000 / day</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Physical / debit card -->
+        <div class="card-manage panel">
+          <div class="card-manage__visual">
+            <div class="bank-card bank-card--front mini-card__card" id="debitCardVisual">
+              <div class="bank-card__top">
+                <span class="bank-card__brand">Velobank</span>
+                <span class="bank-card__type">Debit</span>
+              </div>
+              <div class="bank-card__chip" aria-hidden="true"></div>
+              <div class="bank-card__number" id="debitCardNumber">5312&nbsp;&nbsp;4821&nbsp;&nbsp;••••&nbsp;&nbsp;7790</div>
+              <div class="bank-card__bottom">
+                <div>
+                  <span class="bank-card__label">Card holder</span>
+                  <span class="bank-card__value">Ademola A.</span>
+                </div>
+                <div>
+                  <span class="bank-card__label">Valid thru</span>
+                  <span class="bank-card__value">09/29</span>
+                </div>
+              </div>
+              <div class="mini-card__frozen" id="debitFrozenOverlay">
+                <span>❄ Card frozen</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-manage__details">
+            <h3>Physical card</h3>
+            <p class="card-manage__sub">Your debit card for ATM withdrawals and in-person payments.</p>
+
+            <div class="card-detail-row">
+              <span>Card number</span>
+              <span class="mono" id="debitNumberMasked">5312 4821 •••• 7790</span>
+            </div>
+            <div class="card-detail-row">
+              <span>CVV</span>
+              <span class="mono" id="debitCvv">•••</span>
+            </div>
+            <div class="card-detail-row">
+              <span>Expiry</span>
+              <span class="mono">09/29</span>
+            </div>
+
+            <button class="btn btn--ghost card-manage__toggle" data-reveal-target="debit">Show full details</button>
+
+            <div class="card-toggle-row">
+              <div>
+                <span class="card-toggle-row__label">Freeze this card</span>
+                <span class="card-toggle-row__hint">Pauses ATM and POS transactions.</span>
+              </div>
+              <button class="toggle-switch" id="debitFreezeToggle" data-card="debit" aria-pressed="false">
+                <span class="toggle-switch__knob"></span>
+              </button>
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem;">
+              <label for="debitLimit">Daily spending limit</label>
+              <input type="range" id="debitLimit" class="slider" min="0" max="500000" step="5000" value="150000" />
+              <div class="slider__value mono" id="debitLimitValue">₦150,000 / day</div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Order a new card -->
+      <section class="panel order-card">
+        <div>
+          <h3>Need another card?</h3>
+          <p>Order a free additional virtual card for a specific subscription or shared expense — manage it separately with its own limit.</p>
+        </div>
+        <button class="btn btn--accent" id="orderCardBtn">Order a new card</button>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Order card confirmation -->
+  <div class="modal" id="orderModal" aria-hidden="true">
+    <div class="modal__panel">
+      <button class="modal__close" id="orderModalClose" aria-label="Close">×</button>
+
+      <div id="orderModalForm">
+        <h3>Order a new virtual card</h3>
+        <p class="modal__sub">Give this card a name so you can recognize it later.</p>
+        <div class="form-group">
+          <label for="newCardName">Card nickname</label>
+          <input type="text" id="newCardName" class="form-control" placeholder="e.g. Subscriptions card" />
+        </div>
+        <button class="btn btn--accent" style="width: 100%;" id="orderModalSubmit">Create card</button>
+      </div>
+
+      <div class="modal__success" id="orderModalSuccess">
+        <div class="auth-success__icon">✓</div>
+        <h3>Card created</h3>
+        <p id="orderSuccessText">Your new virtual card is ready to use.</p>
+        <button class="btn btn--accent" id="orderModalDone">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+  <script src="js/cards.js"></script>
+</body>
+</html>

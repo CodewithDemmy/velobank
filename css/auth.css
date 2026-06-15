@@ -1,0 +1,438 @@
+/* ============================================
+   Velobank — Auth pages (signup / login)
+   Extends tokens defined in style.css
+   ============================================ */
+
+.auth {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+}
+
+/* ---------------------------------------------
+   Left brand panel
+--------------------------------------------- */
+.auth__brand {
+  background: var(--color-primary);
+  color: var(--color-bg);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.auth__brand .nav__logo { color: var(--color-bg); }
+.auth__brand .nav__logo span { color: var(--color-accent); }
+
+.auth__brand-body {
+  max-width: 26em;
+}
+
+.auth__brand-body h2 {
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  margin: 1.5rem 0 1rem;
+}
+
+.auth__brand-body p {
+  color: rgba(247, 244, 237, 0.7);
+  font-size: 0.98rem;
+}
+
+.auth__brand-card {
+  margin-top: clamp(2rem, 5vw, 3rem);
+}
+
+.auth__brand-card .bank-card {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1.6 / 1;
+  animation: float 6s ease-in-out infinite;
+}
+
+.auth__brand-foot {
+  font-size: 0.85rem;
+  color: rgba(247, 244, 237, 0.5);
+}
+.auth__brand-foot a {
+  color: var(--color-bg);
+  text-decoration: underline;
+  text-decoration-color: rgba(247, 244, 237, 0.35);
+}
+.auth__brand-foot a:hover { color: var(--color-accent); }
+
+/* ---------------------------------------------
+   Right form panel
+--------------------------------------------- */
+.auth__panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 4rem) 1.5rem;
+}
+
+.auth__form-wrap {
+  width: 100%;
+  max-width: 440px;
+}
+
+.auth__mobile-logo {
+  display: none;
+  margin-bottom: 2rem;
+}
+
+.auth__heading {
+  margin-bottom: 0.5rem;
+}
+.auth__heading h1 {
+  font-size: clamp(1.6rem, 3.2vw, 2.1rem);
+  margin-bottom: 0.5rem;
+}
+.auth__heading p {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.auth__switch {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--color-muted);
+}
+.auth__switch a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.auth__switch a:hover { color: var(--color-accent); }
+
+/* ---------------------------------------------
+   Form elements
+--------------------------------------------- */
+.form-group {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.form-group .hint {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  font-weight: 400;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+.form-control:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(11, 61, 46, 0.1);
+}
+.form-control.is-invalid {
+  border-color: var(--color-accent);
+}
+.form-control.is-valid {
+  border-color: var(--color-primary);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.field-error {
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  display: none;
+}
+.field-error.is-visible { display: block; }
+
+/* Password field with show/hide toggle */
+.password-field {
+  position: relative;
+}
+.password-field .form-control {
+  padding-right: 3rem;
+}
+.password-toggle {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  padding: 0.3rem 0.5rem;
+  border-radius: var(--radius-sm);
+}
+.password-toggle:hover { color: var(--color-primary); }
+
+/* Password strength meter */
+.strength {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+.strength__bar {
+  height: 4px;
+  flex: 1;
+  background: var(--color-line);
+  border-radius: 2px;
+  transition: background 0.25s var(--ease);
+}
+.strength__bar.is-weak { background: var(--color-accent); }
+.strength__bar.is-fair { background: #ffd9a0; }
+.strength__bar.is-strong { background: var(--color-primary); }
+
+.strength__label {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  margin-top: 0.35rem;
+  display: block;
+}
+
+/* Checkbox row */
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+.form-check input {
+  margin-top: 0.2rem;
+  accent-color: var(--color-primary);
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.form-check a { color: var(--color-primary); font-weight: 600; }
+
+/* Forgot password row */
+.field-meta {
+  display: flex;
+  justify-content: flex-end;
+}
+.field-meta a {
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.field-meta a:hover { color: var(--color-accent); }
+
+/* ---------------------------------------------
+   Stepper (signup)
+--------------------------------------------- */
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+}
+
+.stepper__step {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  position: relative;
+}
+
+.stepper__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 13px;
+  left: calc(50% + 24px);
+  right: calc(-50% + 24px);
+  height: 2px;
+  background: var(--color-line);
+  z-index: 0;
+}
+.stepper__step.is-complete:not(:last-child)::after {
+  background: var(--color-primary);
+}
+
+.stepper__num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.stepper__step.is-active .stepper__num {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-bg);
+}
+.stepper__step.is-complete .stepper__num {
+  background: var(--color-mint);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.stepper__label {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  font-weight: 600;
+}
+.stepper__step.is-active .stepper__label,
+.stepper__step.is-complete .stepper__label {
+  color: var(--color-text);
+}
+
+/* ---------------------------------------------
+   Multi-step form panels
+--------------------------------------------- */
+.form-step {
+  border: none;
+  display: none;
+  animation: fade-in 0.35s var(--ease);
+}
+.form-step.is-active {
+  display: block;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.form-step__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+.form-step__actions .btn { flex: 1; }
+.form-step__actions .btn--ghost { flex: 0 0 auto; }
+
+/* ---------------------------------------------
+   Verification step — upload dropzone
+--------------------------------------------- */
+.upload-box {
+  border: 1.5px dashed var(--color-line);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: border-color 0.25s var(--ease), background 0.25s var(--ease);
+}
+.upload-box:hover,
+.upload-box.is-dragover {
+  border-color: var(--color-primary);
+  background: var(--color-mint);
+}
+.upload-box.has-file {
+  border-color: var(--color-primary);
+  border-style: solid;
+}
+
+.upload-box__icon {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+.upload-box__text {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+.upload-box__filename {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  font-weight: 700;
+  margin-top: 0.4rem;
+  display: none;
+}
+.upload-box.has-file .upload-box__filename { display: block; }
+.upload-box.has-file .upload-box__text--default { display: none; }
+
+.upload-box input[type="file"] {
+  position: absolute;
+  width: 1px; height: 1px;
+  opacity: 0;
+  overflow: hidden;
+}
+
+/* ---------------------------------------------
+   Success state (after final submit)
+--------------------------------------------- */
+.auth-success {
+  text-align: center;
+  display: none;
+}
+.auth-success.is-active { display: block; }
+.auth-success__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--color-mint);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin: 0 auto 1.5rem;
+}
+.auth-success h1 {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  margin-bottom: 0.6rem;
+}
+.auth-success p {
+  color: var(--color-muted);
+  margin-bottom: 2rem;
+}
+
+/* ---------------------------------------------
+   Responsive
+--------------------------------------------- */
+@media (max-width: 900px) {
+  .auth {
+    grid-template-columns: 1fr;
+  }
+  .auth__brand {
+    display: none;
+  }
+  .auth__mobile-logo {
+    display: block;
+  }
+  .auth__panel {
+    padding-top: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stepper__label { display: none; }
+  .form-step__actions { flex-direction: column-reverse; }
+  .form-step__actions .btn { width: 100%; }
+}

@@ -1,0 +1,166 @@
+/* ============================================
+   Velobank — Legal pages (Terms / Privacy / NDIC)
+   Extends tokens defined in style.css & contact.css
+   ============================================ */
+
+.legal {
+  padding: 0 1.5rem clamp(4rem, 8vw, 6rem);
+}
+
+.legal__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+/* ---------------------------------------------
+   Table of contents
+--------------------------------------------- */
+.legal__toc {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  position: sticky;
+  top: 1.75rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+
+.legal__toc .nav__divider-label {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.legal__toc-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  padding: 0.45rem 0;
+  transition: color 0.2s var(--ease);
+}
+.legal__toc-link:hover,
+.legal__toc-link.is-active {
+  color: var(--color-primary);
+}
+
+/* ---------------------------------------------
+   Document meta (last updated, intro)
+--------------------------------------------- */
+.legal__meta {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+}
+
+.legal__intro {
+  color: var(--color-muted);
+  font-size: 1rem;
+  max-width: 42em;
+  margin-bottom: 2.5rem;
+}
+
+/* ---------------------------------------------
+   Content sections
+--------------------------------------------- */
+.legal__content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
+.legal__section h2 {
+  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+  margin-bottom: 0.75rem;
+  scroll-margin-top: 1.5rem;
+}
+
+.legal__section h3 {
+  font-size: 1.02rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.legal__section p,
+.legal__section li {
+  color: var(--color-muted);
+  font-size: 0.97rem;
+  max-width: 42em;
+}
+
+.legal__section p + p {
+  margin-top: 0.75rem;
+}
+
+.legal__section ul {
+  margin-top: 0.5rem;
+  padding-left: 1.25rem;
+  max-width: 42em;
+}
+.legal__section li {
+  list-style: disc;
+  margin-bottom: 0.4rem;
+}
+
+.legal__section p a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.legal__section p a:hover { color: var(--color-accent); }
+
+/* ---------------------------------------------
+   Cross-links to other legal documents
+--------------------------------------------- */
+.legal__siblings {
+  border-top: 1px solid var(--color-line);
+  padding-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.legal__siblings a {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.legal__siblings a:hover {
+  border-color: var(--color-primary);
+  color: var(--color-accent);
+}
+
+/* ---------------------------------------------
+   Responsive
+--------------------------------------------- */
+@media (max-width: 860px) {
+  .legal__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .legal__toc {
+    position: static;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 1rem;
+    align-items: center;
+  }
+  .legal__toc .nav__divider-label {
+    display: none;
+  }
+  .legal__toc-link {
+    white-space: nowrap;
+    padding: 0.4rem 0.2rem;
+  }
+}

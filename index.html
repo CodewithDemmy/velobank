@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Velobank — Banking that moves with you</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Sora:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== Navigation ===== -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo">Velo<span>bank</span></a>
+
+      <nav class="nav__links" id="navLinks">
+        <a href="#features">Features</a>
+        <a href="#cards">Cards</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#security">Security</a>
+        <a href="about.html">About</a>
+
+        <div class="nav__links-extra">
+          <span class="nav__divider-label">Your account</span>
+          <a href="login.html">Log in</a>
+          <a href="signup.html">Open an account</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="transactions.html">Transactions</a>
+          <a href="beneficiaries.html">Beneficiaries</a>
+          <a href="cards.html">Manage cards</a>
+          <a href="savings.html">Savings</a>
+          <a href="settings.html">Settings</a>
+          <a href="contact.html">Contact us</a>
+        </div>
+      </nav>
+
+      <div class="nav__actions">
+        <a href="login.html" class="link-btn">Log in</a>
+        <a href="signup.html" class="btn btn--primary">Open an account</a>
+      </div>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow">Digital banking, built for African and beyond</p>
+        <h1 class="hero__title">
+          Your money,<br />
+          <em>moving</em> at the<br />
+          speed of life.
+        </h1>
+        <p class="hero__sub">
+          Open an account in minutes. Send money instantly, save without
+          thinking, and track every naira — all from one place.
+        </p>
+        <div class="hero__actions">
+          <a href="signup.html" class="btn btn--accent">Open an account — it's free</a>
+          <a href="#how-it-works" class="btn btn--ghost">See how it works</a>
+        </div>
+
+        <div class="hero__stats">
+          <div class="stat">
+            <span class="stat__num" data-count="2400000">0</span>
+            <span class="stat__label">Transfers processed daily</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num" data-count="180000">0</span>
+            <span class="stat__label">Accounts opened</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num" data-count="9" data-suffix="s" data-decimal-divide="10">0.0</span>
+            <span class="stat__label">Avg. transfer time</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+        <div class="card-stack">
+          <div class="bank-card bank-card--back">
+            <span class="bank-card__brand">Velobank</span>
+          </div>
+          <div class="bank-card bank-card--front">
+            <div class="bank-card__top">
+              <span class="bank-card__brand">Velobank</span>
+              <span class="bank-card__type">Virtual</span>
+            </div>
+            <div class="bank-card__chip" aria-hidden="true"></div>
+            <div class="bank-card__number">5312&nbsp;&nbsp;48••&nbsp;&nbsp;••••&nbsp;&nbsp;7790</div>
+            <div class="bank-card__bottom">
+              <div>
+                <span class="bank-card__label">Card holder</span>
+                <span class="bank-card__value">Ademola A.</span>
+              </div>
+              <div>
+                <span class="bank-card__label">Expires</span>
+                <span class="bank-card__value">09/29</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Signature element: live transaction ticker -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track" id="tickerTrack"></div>
+    </div>
+  </section>
+
+  <!-- ===== Features ===== -->
+  <section class="features" id="features">
+    <div class="section-head">
+      <p class="eyebrow">What's inside</p>
+      <h2> Everything a modern account should do — without the queue. </h2>
+    </div>
+
+    <div class="features__grid">
+      <article class="feature-card">
+        <div class="feature-card__icon">⚡</div>
+        <h3>Instant transfers</h3>
+        <p>Send to any bank in Nigeria in seconds, day or night. No cut-off times, no "please try again later."</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-card__icon">🪙</div>
+        <h3>Smart savings</h3>
+        <p>Set a goal, automate a round-up or fixed amount, and watch it grow with transparent interest — no hidden terms.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-card__icon">📊</div>
+        <h3>Spend insights</h3>
+        <p>Every transaction sorted into categories automatically, so you always know where your money went — and where it's going.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-card__icon">🔔</div>
+        <h3>Real-time alerts</h3>
+        <p>A notification the moment money moves. Every debit, credit, and failed attempt — nothing happens quietly.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-card__icon">🧾</div>
+        <h3>Bill payments</h3>
+        <p>Airtime, data, electricity, and TV subscriptions — pay from your balance without leaving the page.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-card__icon">🛡️</div>
+        <h3>Freeze in one tap</h3>
+        <p>Lost your card or spotted something odd? Freeze it instantly, then unfreeze the moment it turns up.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== Card showcase ===== -->
+  <section class="cards" id="cards">
+    <div class="cards__visual">
+      <div class="bank-card bank-card--large">
+        <div class="bank-card__top">
+          <span class="bank-card__brand">Velobank</span>
+          <span class="bank-card__type">Debit</span>
+        </div>
+        <div class="bank-card__chip" aria-hidden="true"></div>
+        <div class="bank-card__number">5312&nbsp;&nbsp;4821&nbsp;&nbsp;0094&nbsp;&nbsp;7790</div>
+        <div class="bank-card__bottom">
+          <div>
+            <span class="bank-card__label">Card holder</span>
+            <span class="bank-card__value">Ademola A.</span>
+          </div>
+          <div>
+            <span class="bank-card__label">Valid thru</span>
+            <span class="bank-card__value">09/29</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards__copy">
+      <p class="eyebrow">Cards</p>
+      <h2>A card that works the moment you open the account.</h2>
+      <p class="cards__sub">
+        Every Velobank account comes with a free virtual card you can use
+        instantly — for subscriptions, online stores, or anywhere that asks
+        for card details. A physical card ships to your door, free, within
+        five working days.
+      </p>
+
+      <ul class="cards__list">
+        <li><span>No</span> maintenance fees on your first card</li>
+        <li><span>Set</span> spending limits per card, per merchant</li>
+        <li><span>Pause</span> or cancel a card without closing your account</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== How it works ===== -->
+  <section class="how" id="how-it-works">
+    <div class="section-head">
+      <p class="eyebrow">Getting started</p>
+      <h2>Three steps. About five minutes. No paperwork.</h2>
+    </div>
+
+    <ol class="how__steps">
+      <li class="how__step">
+        <span class="how__num">01</span>
+        <h3>Tell us a little about you</h3>
+        <p>Your name, phone number, and a valid ID. That's the entire form — we don't ask twice.</p>
+      </li>
+      <li class="how__step">
+        <span class="how__num">02</span>
+        <h3>Verify, instantly</h3>
+        <p>A quick selfie and ID check confirms it's really you. Most people are done in under two minutes.</p>
+      </li>
+      <li class="how__step">
+        <span class="how__num">03</span>
+        <h3>Fund your account and go</h3>
+        <p>Transfer in from any bank, or generate a free account number to receive money right away.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ===== Security ===== -->
+  <section class="security" id="security">
+    <div class="security__inner">
+      <div class="security__copy">
+        <p class="eyebrow">Security</p>
+        <h2>Held to the same standard as the banks you already trust.</h2>
+        <p class="security__sub">
+          Velobank is licensed and regulated, and every account is insured
+          by the Nigeria Deposit Insurance Corporation (NDIC) up to the
+          standard limit. Your funds sit in a licensed financial institution
+          — not with us.
+        </p>
+
+        <div class="security__badges">
+          <div class="badge">
+            <strong>NDIC Insured</strong>
+            <span>Deposits protected up to the statutory limit</span>
+          </div>
+          <div class="badge">
+            <strong>256-bit Encryption</strong>
+            <span>Every transaction, every session</span>
+          </div>
+          <div class="badge">
+            <strong>Biometric Login</strong>
+            <span>Fingerprint or face — your choice</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="security__ledger">
+        <div class="ledger">
+          <div class="ledger__row ledger__row--head">
+            <span>Activity</span><span>Status</span>
+          </div>
+          <div class="ledger__row">
+            <span>Login from new device</span><span class="ledger__status ledger__status--blocked">Blocked</span>
+          </div>
+          <div class="ledger__row">
+            <span>Card payment — Jumia</span><span class="ledger__status ledger__status--ok">Verified</span>
+          </div>
+          <div class="ledger__row">
+            <span>Transfer to unknown account</span><span class="ledger__status ledger__status--review">Flagged</span>
+          </div>
+          <div class="ledger__row">
+            <span>Password change request</span><span class="ledger__status ledger__status--ok">Confirmed by you</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta" id="cta">
+    <div class="cta__inner">
+      <h2>Open your account before your next transfer.</h2>
+      <p>Free to open. No minimum balance. No monthly fees.</p>
+      <form class="cta__form" id="ctaForm">
+        <input type="tel" id="ctaPhone" placeholder="Enter your phone number" required pattern="^[0-9+\s]{7,15}$" />
+        <button type="submit" class="btn btn--accent">Get started</button>
+      </form>
+      <p class="cta__note" id="ctaNote">We'll text you a link to finish signing up. No spam, ever.</p>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="nav__logo">Velo<span>bank</span></a>
+        <p>Banking, simplified — for everyone in African and beyond.</p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#cards">Cards</a>
+        <a href="#how-it-works">How it works</a>
+      </div>
+
+      <div class="footer__col">
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="#security">Security</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="footer__col">
+        <h4>Legal</h4>
+        <a href="terms.html">Terms of service</a>
+        <a href="privacy.html">Privacy policy</a>
+        <a href="ndic.html">NDIC notice</a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; 2026 Velobank. Velobank is a licensed digital bank regulated under applicable Nigerian financial laws.</p>
+      <p>&copy; 2026 Developed and designed by Demmy .</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

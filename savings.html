@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Savings — Velobank</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Sora:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+  <div class="dash">
+
+    <!-- ===== Sidebar ===== -->
+    <aside class="dash__sidebar" id="sidebar">
+      <div class="dash__sidebar-top">
+        <a href="index.html" class="nav__logo">Velo<span>bank</span></a>
+
+        <nav class="dash__nav">
+          <a href="dashboard.html" class="dash__nav-link">
+            <span class="dash__nav-icon">⌂</span> Overview
+          </a>
+          <a href="transactions.html" class="dash__nav-link">
+            <span class="dash__nav-icon">↔</span> Transactions
+          </a>
+          <a href="beneficiaries.html" class="dash__nav-link">
+            <span class="dash__nav-icon">👥</span> Beneficiaries
+          </a>
+          <a href="cards.html" class="dash__nav-link">
+            <span class="dash__nav-icon">▭</span> Cards
+          </a>
+          <a href="savings.html" class="dash__nav-link is-active">
+            <span class="dash__nav-icon">●</span> Savings
+          </a>
+          <a href="settings.html" class="dash__nav-link">
+            <span class="dash__nav-icon">⚙</span> Settings
+          </a>
+        </nav>
+      </div>
+
+      <div class="dash__sidebar-bottom">
+        <div class="dash__user">
+          <div class="dash__avatar">AA</div>
+          <div>
+            <span class="dash__user-name">Ademola A.</span>
+            <span class="dash__user-tag">Personal account</span>
+          </div>
+        </div>
+        <div class="dash__nav-secondary">
+          <a href="index.html" class="dash__nav-link">
+            <span class="dash__nav-icon">🌐</span> Visit website
+          </a>
+          <a href="contact.html" class="dash__nav-link">
+            <span class="dash__nav-icon">✉</span> Contact support
+          </a>
+        </div>
+        <a href="login.html" class="dash__nav-link dash__logout">
+          <span class="dash__nav-icon">⏻</span> Log out
+        </a>
+      </div>
+    </aside>
+
+    <!-- ===== Main content ===== -->
+    <main class="dash__main">
+
+      <!-- Top bar -->
+      <header class="dash__topbar">
+        <button class="dash__menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <div class="dash__greeting">
+          <p class="eyebrow" id="dashDate">Loading date...</p>
+          <h1>Savings</h1>
+        </div>
+
+        <div class="dash__topbar-actions">
+          <button class="dash__icon-btn" aria-label="Notifications">
+            🔔
+            <span class="dash__badge">3</span>
+          </button>
+          <div class="dash__avatar dash__avatar--sm">AA</div>
+        </div>
+      </header>
+
+      <!-- Summary -->
+      <section class="savings-summary panel">
+        <p class="eyebrow">Total saved across all goals</p>
+        <h2 class="balance-card__amount savings-summary__amount">
+          ₦<span id="totalSaved" data-target="0">0</span>
+        </h2>
+        <p class="savings-summary__sub"><span id="goalCount">0</span> active savings goals</p>
+      </section>
+
+      <!-- Goals grid -->
+      <section class="goals-grid" id="goalsGrid">
+        <!-- goal cards populated by JS -->
+
+        <button class="goal-card goal-card--new" id="newGoalBtn">
+          <span class="goal-card--new__icon">＋</span>
+          <span>Create a new goal</span>
+        </button>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Add money to goal modal -->
+  <div class="modal" id="addMoneyModal" aria-hidden="true">
+    <div class="modal__panel">
+      <button class="modal__close" id="addMoneyClose" aria-label="Close">×</button>
+
+      <div id="addMoneyForm">
+        <h3>Add to <span id="addMoneyGoalName">goal</span></h3>
+        <p class="modal__sub">Move money from your main balance into this goal.</p>
+        <div class="form-group">
+          <label for="addMoneyAmount">Amount (₦)</label>
+          <input type="number" id="addMoneyAmount" class="form-control" placeholder="0.00" min="0" step="0.01" />
+        </div>
+        <button class="btn btn--accent" style="width: 100%;" id="addMoneySubmit">Add to goal</button>
+      </div>
+
+      <div class="modal__success" id="addMoneySuccess">
+        <div class="auth-success__icon">✓</div>
+        <h3>Added!</h3>
+        <p id="addMoneySuccessText">Your goal has been updated.</p>
+        <button class="btn btn--accent" id="addMoneyDone">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- New goal modal -->
+  <div class="modal" id="newGoalModal" aria-hidden="true">
+    <div class="modal__panel">
+      <button class="modal__close" id="newGoalClose" aria-label="Close">×</button>
+
+      <div id="newGoalForm">
+        <h3>Create a new savings goal</h3>
+        <p class="modal__sub">Give your goal a name and a target amount.</p>
+
+        <div class="form-group">
+          <label for="newGoalName">Goal name</label>
+          <input type="text" id="newGoalName" class="form-control" placeholder="e.g. New laptop" />
+        </div>
+
+        <div class="form-group">
+          <label for="newGoalIcon">Choose an icon</label>
+          <div class="icon-picker" id="iconPicker">
+            <button type="button" class="icon-picker__option is-active" data-icon="🎯">🎯</button>
+            <button type="button" class="icon-picker__option" data-icon="✈️">✈️</button>
+            <button type="button" class="icon-picker__option" data-icon="💻">💻</button>
+            <button type="button" class="icon-picker__option" data-icon="🚗">🚗</button>
+            <button type="button" class="icon-picker__option" data-icon="🎓">🎓</button>
+            <button type="button" class="icon-picker__option" data-icon="🏥">🏥</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="newGoalTarget">Target amount (₦)</label>
+          <input type="number" id="newGoalTarget" class="form-control" placeholder="e.g. 500000" min="1" step="0.01" />
+        </div>
+
+        <button class="btn btn--accent" style="width: 100%;" id="newGoalSubmit">Create goal</button>
+      </div>
+
+      <div class="modal__success" id="newGoalSuccess">
+        <div class="auth-success__icon">✓</div>
+        <h3>Goal created</h3>
+        <p id="newGoalSuccessText">Your new savings goal is ready.</p>
+        <button class="btn btn--accent" id="newGoalDone">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+  <script src="js/savings.js"></script>
+</body>
+</html>
